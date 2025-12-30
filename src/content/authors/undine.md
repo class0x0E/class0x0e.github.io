@@ -1,7 +1,7 @@
 ---
 title: undine
 meta_title: ""
-image: 
+image: /images/authors/undine.jpg
 description: 
 social:
     qq: 
@@ -9,4 +9,4 @@ social:
     bilibili:
 ---
 
-[填写建议参考](https://class0x0e.github.io/authors/)
+忍耐，就是要想得开、挺得住。
