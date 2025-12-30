@@ -1,12 +1,8 @@
 ---
 title: undine
 meta_title: ""
-image: 
-description: 
-social:
-    qq: 
-    wechat: 
-    bilibili:
+image: /images/authors/undine.jpg
+description: ""
 ---
 
-[填写建议参考](https://class0x0e.github.io/authors/)
+忍耐，就是要想得开、挺得住。
