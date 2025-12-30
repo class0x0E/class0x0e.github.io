@@ -396,13 +396,27 @@ git push origin master # 如果你的分支不是master，请改成你的默认�
 
 文章头image字段指定的封面放在`public/images/posts/`目录下，作者头像放在`public/images/authors/`目录下。
 
-文章内的图片资源建议放在`src/content/assets/`目录下，文章内引用图片时使用相对路径引用，比如：
+文章内的图片资源建议放在`src/content/assets/`目录下，文章内引用图片时使用相对路径引用，相对于`src/content/posts/`目录，比如：
 
 ```markdown
 ![图片描述](../assets/your-image.jpg)
 ```
 
-../表示上一级目录，即`src/content/posts/`，再加上`assets/your-image.jpg`就是图片的完整路径了。
+../表示上一级目录，即`src/content/`，再加上`assets/your-image.jpg`就是图片的完整路径了。
+
+#### 视频资源的存放
+
+文章内的视频资源建议放在`public/videos/`目录下，这个博客解析的时候是直接把`src`字段加到`videos/`后面的，因此 **只用填文件名**，比如：
+
+```markdown
+<Video src="2025.mp4" title="视频标题" width={1000} height="auto" />
+```
+
+其中，`width`和`height`可以根据需要调整。`width=1000`大小适中，`height="auto"`可以保持视频的原始宽高比。
+
+<Notice type="warning">
+视频文件建议控制在几十MB以内，过大的视频会导致博客加载缓慢，过大的视频可能超出github单次上传限制（100MB）。
+</Notice>
 
 #### bug上报
 
