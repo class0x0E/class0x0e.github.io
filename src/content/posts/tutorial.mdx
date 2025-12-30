@@ -3,7 +3,7 @@ title: 博客基本教程
 meta_title: ""
 description: 博客仓库的拉取，nodejs环境的搭建，博客的本地运行与部署
 date: 2025-12-30
-image: images/posts/gugugaga.png
+image: /images/posts/gugugaga.png
 categories: ["关于本博客"]
 authors: ["biscuit","undine"]
 tags: ["基本教程"]
@@ -14,7 +14,12 @@ draft: false
 
 基于老六fork并成功创建pr的伟大实践经验。
 
+---
+
 ### 推荐编辑器
+
+<Tabs client:load>
+<Tab name="Vscode">
 
 #### vscode
 
@@ -25,6 +30,9 @@ draft: false
 1. 免费开源
 
 2. 插件丰富，支持markdown预览，git图形化，代码补全等功能
+</Tab>
+
+<Tab name="Typora">
 
 #### typora
 
@@ -33,6 +41,10 @@ draft: false
 理由：
 
 我不知道，没用过，这一块让老六补充
+</Tab>
+</Tabs>
+
+---
 
 ### github上创建账号和安装git
 
@@ -45,7 +57,7 @@ draft: false
 <Tabs client:load>
 <Tab name="Windows">
 
-##### windows下git安装
+#### windows下git安装
 
 从官网安装：[git for windows](https://git-scm.com/download)
 
@@ -64,14 +76,14 @@ git --version
 
 <Tab name="Linux">
 
-##### linux下git安装
+#### linux下git安装
 
 大部分linux发行版都自带git，如果没有可以通过包管理器安装。
 
 <Tabs client:load>
 <Tab name="Debian/Ubuntu">
 
-##### 对于Debian/Ubuntu系
+对于Debian/Ubuntu系
 
 ```bash
 sudo apt update
@@ -82,7 +94,7 @@ sudo apt install git
 
 <Tab name="Arch">
 
-##### 对于Arch系
+对于Arch系
 
 ```bash
 sudo pacman -S git
@@ -92,7 +104,7 @@ sudo pacman -S git
 
 <Tab name="Fedora">
 
-##### 对于Fedora系
+对于Fedora系
 
 ```bash
 sudo dnf install git
@@ -111,7 +123,7 @@ git --version
 </Tab>
 <Tab name="macOS">
 
-##### macOS下git安装
+#### macOS下git安装
 
 鼠鼠没有用过mac，希望懂哥补充
 </Tab>
@@ -128,6 +140,8 @@ git config --global user.email "你注册github时使用的邮箱"
 ```
 
 配置ssh这一步可以跳过，老六实验过能直接clone，如果不行再来配置
+
+---
 
 ### 博客仓库的fork与克隆
 
@@ -151,6 +165,8 @@ git clone 你的fork仓库url
 
 这样就把fork的博客仓库克隆到本地了
 
+---
+
 ### nodejs环境的搭建
 
 博客是基于[Astro](https://astro.build/)框架搭建的，需要nodejs环境（很神奇的是astro只支持nodejs的偶数版本）。
@@ -170,7 +186,7 @@ node -v
 <Tabs client:load>
 <Tab name="Windows">
 
-##### windows下nodejs安装
+#### windows下nodejs安装
 
 看老六的那篇windows上安装nodejs的文章：[windows下安装nodejs和fnm](https://class0x0e.github.io/posts/windows-nodejs-fnm/)
 
@@ -178,14 +194,14 @@ node -v
 
 <Tab name="Linux">
 
-##### linux下nodejs安装
+#### linux下nodejs安装
 
 先装fnm，fnm是一个nodejs版本管理工具，可以方便地安装和切换nodejs版本。不推荐用nvm。
 
 <Tabs client:load>
 <Tab name="Debian/Ubuntu">
 
-##### 对于Debian/Ubuntu系安装fnm和nodejs
+对于Debian/Ubuntu系
 
 建议使用官方的安装脚本：
 
@@ -198,7 +214,7 @@ curl -fsSL https://fnm.vercel.app/install | bash  #这里根据需要，用的ba
 </Tab>
 <Tab name="Arch">
 
-##### 对于Arch系安装fnm和nodejs
+对于Arch系
 
 ```bash
 sudo pacman -S fnm
@@ -207,7 +223,7 @@ sudo pacman -S fnm
 </Tab>
 <Tab name="Fedora">
 
-##### 对于Fedora系安装fnm和nodejs
+对于Fedora系
 
 ```bash
 sudo dnf install fnm
@@ -216,7 +232,7 @@ sudo dnf install fnm
 </Tab>
 </Tabs>
 
-然后按照终端输出的提示，把fnm的初始化代码添加到对应的shell配置文件中（比如~/.bashrc，~/.zshrc，~/.config/fish/config.fish等）
+然后按照终端输出的提示，把fnm的初始化代码添加到对应的shell配置文件中（比如\~/.bashrc，\~/.zshrc，\~/.config/fish/config.fish等）
 
 ```bash
 source ~/.bashrc  # 或 ~/.zshrc
@@ -234,7 +250,7 @@ fnm use 24      # 切换到nodejs 24.x.x
 </Tab>
 <Tab name="macOS">
 
-##### macOS下nodejs安装
+#### macOS下nodejs安装
 
 鼠鼠没有用过mac，希望懂哥补充
 </Tab>
@@ -246,6 +262,8 @@ fnm use 24      # 切换到nodejs 24.x.x
 node -v #应该显示v24.x.x
 npm -v
 ```
+
+---
 
 ### 博客的本地运行与部署
 
@@ -280,6 +298,8 @@ npm run preview
 ```
 
 ctrl+点击链接就可以在浏览器中预览博客了，可以检查一下内容排版有没有出bug，确保没问题了之后再提交。
+
+---
 
 ### 提交文章
 
@@ -361,3 +381,27 @@ git push origin master # 如果你的分支不是master，请改成你的默认�
 然后到你的github账号下打开你的fork仓库页面，点击“Compare & pull request”按钮，填写标题和描述，提交pull request。这一步把你的改动从fork的远程提交到我的仓库的远程。
 
 我会定期查看pull request，审核通过之后就会合并，一般来说是攒了3、4个pr之后action一次。action之后博客网站就会更新。
+
+如果你的pr有问题我会在pr下面留言，修改不需要新开pr，只需要在本地继续修改文件，然后再次执行 `git add`、`git commit` 和 `git push`。新的改动会自动同步到当前的 PR 中。
+
+#### 查看action
+
+每次pr合并之后，github action会自动部署博客网站。你可以在你的fork仓库页面的“Actions”标签页下查看action的运行状态。如果失败了，建议先自己排查一下，把报错信息发给ai，解决不了欢迎骚扰我。
+
+---
+
+### 其他内容
+
+#### 图片资源的存放
+
+文章头image字段指定的封面放在`public/images/posts/`目录下，作者头像放在`public/images/authors/`目录下。
+
+文章内的图片资源建议放在`src/content/assets/`目录下，文章内引用图片时使用相对路径引用，比如：
+
+```markdown
+![图片描述](../assets/your-image.jpg)
+```
+
+../表示上一级目录，即`src/content/posts/`，再加上`assets/your-image.jpg`就是图片的完整路径了。
+
+---

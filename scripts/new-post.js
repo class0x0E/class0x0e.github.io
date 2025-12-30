@@ -6,7 +6,7 @@ const title = process.argv[2] || 'New Post';
 // 转换成文件名格式 (例如: "Hello World" -> "hello-world")
 const slug = title.toLowerCase().replace(/\s+/g, '-');
 const date = new Date().toISOString().split('T')[0];
-const fileName = `${slug}.md`;
+const fileName = `${slug}.mdx`;//用mdx格式，支持酷炫的html
 const filePath = path.join(process.cwd(), 'src/content/posts', fileName);
 
 // 文章模板
@@ -16,7 +16,7 @@ title: ${title}
 meta_title: ""
 description: ""
 date: ${date}
-image: 
+image: ""
 categories: []
 authors: []
 tags: []

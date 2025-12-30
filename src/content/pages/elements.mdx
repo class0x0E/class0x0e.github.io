@@ -43,7 +43,7 @@ draft: false
 
 5. `draft`字段的值只能是`true`或`false`，不能加引号。如果是`true`，表示这篇文章是草稿，不会被发布。
 6. `description`字段用于文章的简短描述，需要加引号，建议填写，这是没打开文章时的预览文本。
-7. `image`字段用于文章的封面图片。图片路径是**相对于** `public`文件夹的路径，例如`/images/posts/cover.jpg`表示图片在`public/images/posts/cover.jpg`。<mark>一般把封面图片放在</mark>`public/images/posts/`文件夹下。
+7. `image`字段用于文章的封面图片,引号可加可不加。图片路径是**相对于** `public`文件夹的路径，例如`/images/posts/cover.jpg`表示图片在`public/images/posts/cover.jpg`。<mark>一般把封面图片放在</mark>`public/images/posts/`文件夹下。
 8. 每个人写文章的时候注意一下`categories`和`tags`里内容的复用率，避免出现有100个几乎一样的category然后每个里面只有一篇文章的情况。
 
 ---
@@ -415,10 +415,15 @@ Tab的作用是一个小框里面可以切换不同的内容：
 
 对应的代码如下：
 
+>2024/12/30：修改了tab检测逻辑，现在支持tab嵌套了，推荐只嵌套一层，避免过于复杂。
+
 ```html
 <Tabs client:load>  // 总的Tabs 组件开始
 <Tab name="标签页 1">  //每个tab内容开始
-#### tab1标题
+
+#### tab1标题   // 注意这里是四级标题，四级是因为字体大小比较合适。
+
+//如果有嵌套的tab,里面的标题建议用六级标题，或者干脆正文加粗表示标题。
 
 tab1内容
 

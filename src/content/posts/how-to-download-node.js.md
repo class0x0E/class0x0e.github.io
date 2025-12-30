@@ -3,7 +3,7 @@ title: How to Download Node.js
 meta_title: ""
 description: ""
 date: 2025-12-30
-image: 
+image: ""
 categories: []
 authors: ["undine"]
 tags: []

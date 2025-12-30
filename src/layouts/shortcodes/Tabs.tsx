@@ -19,13 +19,48 @@ const Tabs = ({ children }: { children: React.ReactElement<TabChildrenProps> }) 
     }
   }, [active]);
 
-  const tabLinks = Array.from(
-    children.props.value.matchAll(
-      //@ts-ignore
-      /<div\s+data-name="([^"]+)"[^>]*>(.*?)<\/div>/gs,
-    ),
-    (match: RegExpMatchArray) => ({ name: match[1], children: match[0] }),
-  );
+  // Improved parsing logic to handle nested divs
+  const parseTabs = (html: string) => {
+    const tabs = [];
+    const regex = /<div\s+data-name="([^"]+)"[^>]*>/g;
+    let match;
+
+    while ((match = regex.exec(html)) !== null) {
+      const name = match[1];
+      const startIndex = match.index;
+      const contentStartIndex = startIndex + match[0].length;
+
+      let depth = 1;
+      let currentIndex = contentStartIndex;
+
+      while (depth > 0 && currentIndex < html.length) {
+        const nextOpen = html.indexOf("<div", currentIndex);
+        const nextClose = html.indexOf("</div>", currentIndex);
+
+        if (nextClose === -1) {
+          break; // Malformed HTML
+        }
+
+        if (nextOpen !== -1 && nextOpen < nextClose) {
+          depth++;
+          currentIndex = nextOpen + 4;
+        } else {
+          depth--;
+          currentIndex = nextClose + 6;
+        }
+      }
+
+      if (depth === 0) {
+        const fullString = html.substring(startIndex, currentIndex);
+        tabs.push({ name, children: fullString });
+        // Continue searching after the current tab
+        regex.lastIndex = currentIndex;
+      }
+    }
+    return tabs;
+  };
+
+  const tabLinks = parseTabs(children.props.value);
 
   const handleKeyDown = (
     event: React.KeyboardEvent<EventTarget>,
