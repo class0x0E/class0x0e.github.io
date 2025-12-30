@@ -4,9 +4,9 @@ meta_title: "Intro"
 description: "博客介绍文章，欢迎来到14班的班级博客！"
 date: 2025-12-28
 image: ""
-categories: []
-authors: []
-tags: []
+categories: ["关于本博客"]
+authors: ["biscuit"]
+tags: ["介绍"]
 draft: false
 ---
 
